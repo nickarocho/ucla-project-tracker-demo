@@ -30,39 +30,39 @@ function printProjectData() {
   // ✅: get projects from localStorage (*hint!* call the function you already wrote!)
   var projects = readProjectsFromStorage();
 
-  // TODO: loop through each project and create a row
-
+  // ✅: loop through each project and create a row
   for (var i = 0; i < projects.length; i++) {
     var project = projects[i];
-    // TODO: get the name/type/& date of the current project in the loop
+    // ✅: get the name/type/& date of the current project in the loop
     var projectName = project.name;
     var projectType = project.type;
     var projectDate = dayjs(project.date);
 
-    // TODO: get date/time for START of today
+    // ✅: get date/time for START of today
+    var today = dayjs().startOf('day');
 
-    // TODO: Create row and column elements (*hint!* <tr> -> <td>) for the project and add text to each cell
+    // ✅: Create row and column elements (*hint!* <tr> -> <td>) for the project and add text to each cell
     var rowEl = $('<tr>');
     var nameEl = $('<td>').text(projectName);
     var typeEl = $('<td>').text(projectType);
     var dateEl = $('<td>').text(projectDate.format('MM/DD/YYYY'));
 
     // ----- TASK 4 - ONLY WORK ON THIS IF YOU'VE COMPLETED TASKS 1 - 3!!!
-    // TODO: create a Delete button in its own table cell
+    // ✅: create a Delete button in its own table cell
     var deleteEl = $('<td><button class="btn btn-sm">X</button></td>');
     // (*hint!* save the index of the project as a `data-*` attribute on the button so we know
     // what project to delete when we click that button)
 
     // ----- TASK 4 - ONLY WORK ON THIS IF YOU'VE COMPLETED TASKS 1 - 3!!!
-    // TODO: add custom classes to the row to show if project is late or due today
+    // ✅: add custom classes to the row to show if project is late or due today
     // (*hint!* comparing project date to today's date)
-    if ('project is late') {
-      // project is late
-    } else if ('project is do today') {
-      // project is do today
+    if (projectDate.isBefore(today)) {
+      rowEl.addClass('project-late');
+    } else if (projectDate.isSame(today)) {
+      rowEl.addClass('project-today');
     }
 
-    // TODO: append elements to DOM to display them
+    // ✅: append elements to DOM to display them
     rowEl.append(nameEl, typeEl, dateEl, deleteEl);
     projectDisplayEl.append(rowEl);
   }
