@@ -7,6 +7,9 @@ var projectNameInputEl = $('#project-name-input');
 var projectTypeInputEl = $('#project-type-input');
 var projectDateInputEl = $('#project-date-input');
 
+// store the default project to show if no projects are in local storage
+var defaultProjects = projectDisplayEl.children();
+
 // ✅: write a function to handle displaying the time
 function displayTime() {
   var rightNow = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a');
@@ -30,6 +33,11 @@ function printProjectData() {
   projectDisplayEl.empty();
   // ✅: get projects from localStorage (*hint!* call the function you already wrote!)
   var projects = readProjectsFromStorage();
+
+  if (!projects.length) {
+    projectDisplayEl.append(defaultProjects);
+    return;
+  }
 
   // ✅: loop through each project and create a row
   for (var i = 0; i < projects.length; i++) {
