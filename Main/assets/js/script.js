@@ -27,7 +27,6 @@ function saveProjectsToStorage(projects) {
 function printProjectData() {
   // ✅: clear current projects on the page (*hint!* how can you "empty" something in jQuery)
   projectDisplayEl.empty();
-
   // ✅: get projects from localStorage (*hint!* call the function you already wrote!)
   var projects = readProjectsFromStorage();
 
@@ -35,16 +34,22 @@ function printProjectData() {
 
   for (var i = 0; i < projects.length; i++) {
     var project = projects[i];
-    console.log(project);
-    // TODO: get the date of the current project in the loop
+    // TODO: get the name/type/& date of the current project in the loop
+    var projectName = project.name;
+    var projectType = project.type;
+    var projectDate = dayjs(project.date);
 
     // TODO: get date/time for START of today
 
     // TODO: Create row and column elements (*hint!* <tr> -> <td>) for the project and add text to each cell
-
+    var rowEl = $('<tr>');
+    var nameEl = $('<td>').text(projectName);
+    var typeEl = $('<td>').text(projectType);
+    var dateEl = $('<td>').text(projectDate.format('MM/DD/YYYY'));
 
     // ----- TASK 4 - ONLY WORK ON THIS IF YOU'VE COMPLETED TASKS 1 - 3!!!
     // TODO: create a Delete button in its own table cell
+    var deleteEl = $('<td><button class="btn btn-sm">X</button></td>');
     // (*hint!* save the index of the project as a `data-*` attribute on the button so we know
     // what project to delete when we click that button)
 
@@ -58,6 +63,8 @@ function printProjectData() {
     }
 
     // TODO: append elements to DOM to display them
+    rowEl.append(nameEl, typeEl, dateEl, deleteEl);
+    projectDisplayEl.append(rowEl);
   }
 }
 
@@ -108,5 +115,5 @@ projectFormEl.on('submit', handleProjectFormSubmit);
 
 // TODO: update the time every second
 
-// TODO: call the function to print the project data read from local storage on page load
+// ✅: call the function to print the project data read from local storage on page load
 printProjectData();
