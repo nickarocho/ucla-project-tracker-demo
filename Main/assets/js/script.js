@@ -1,4 +1,5 @@
 // TODO: save reference to important DOM elements using jQuery
+alert('works!');
 
 // TODO: write a function to handle displaying the time
 function displayTime() {
@@ -24,28 +25,28 @@ function printProjectData() {
   // TODO: loop through each project and create a row
 
   // for () { // start for loop
-    // TODO: get the date of the current project in the loop
+  // TODO: get the date of the current project in the loop
 
-    // TODO: get date/time for START of today
+  // TODO: get date/time for START of today
 
-    // TODO: Create row and column elements (*hint!* <tr> -> <td>) for the project and add text to each cell
+  // TODO: Create row and column elements (*hint!* <tr> -> <td>) for the project and add text to each cell
 
 
-    // ----- TASK 4 - ONLY WORK ON THIS IF YOU'VE COMPLETED TASKS 1 - 3!!!
-    // TODO: create a Delete button in its own table cell
-    // (*hint!* save the index of the project as a `data-*` attribute on the button so we know
-    // what project to delete when we click that button)
+  // ----- TASK 4 - ONLY WORK ON THIS IF YOU'VE COMPLETED TASKS 1 - 3!!!
+  // TODO: create a Delete button in its own table cell
+  // (*hint!* save the index of the project as a `data-*` attribute on the button so we know
+  // what project to delete when we click that button)
 
-    // ----- TASK 4 - ONLY WORK ON THIS IF YOU'VE COMPLETED TASKS 1 - 3!!!
-    // TODO: add custom classes to the row to show if project is late or due today
-    // (*hint!* comparing project date to today's date)
-    if ('project is late') {
-      // project is late
-    } else if ('project is do today') {
-      // project is do today
-    }
+  // ----- TASK 4 - ONLY WORK ON THIS IF YOU'VE COMPLETED TASKS 1 - 3!!!
+  // TODO: add custom classes to the row to show if project is late or due today
+  // (*hint!* comparing project date to today's date)
+  if ('project is late') {
+    // project is late
+  } else if ('project is do today') {
+    // project is do today
+  }
 
-    // TODO: append elements to DOM to display them
+  // TODO: append elements to DOM to display them
   // } // end for loop
 }
 
