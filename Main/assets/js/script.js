@@ -12,9 +12,10 @@ function displayTime() {
   // ...
 }
 
-// TODO: write a function to read projects from local storage
+// ✅: write a function to read projects from local storage
 function readProjectsFromStorage() {
-  // ...
+  var projects = JSON.parse(localStorage.getItem('projects')) || [];
+  return projects;
 }
 
 // TODO: write a function that saves projects (passed as a parameter) to local storage
@@ -57,7 +58,7 @@ function printProjectData() {
   // } // end for loop
 }
 
-// TODO: write a function to add a project to local storage and call the fn that prints the project data
+// ✅: write a function to add a project to local storage and call the fn that prints the project data
 // (*hint!* this should happen when the form in the modal is submitted)
 function handleProjectFormSubmit(event) {
   event.preventDefault();
@@ -75,12 +76,12 @@ function handleProjectFormSubmit(event) {
 
   // ✅: add project to local storage w/ the function you already wrote
   // (*hint!* make sure it doesn't overwrite other projects, but rather ADDS it)
-  var projects = []; // TODO: write & call readProjectsFromStorage
+  var projects = readProjectsFromStorage(); // []
   projects.push(newProject);
 
   saveProjectsToStorage(projects);
 
-  // TODO: print project data with the function you wrote
+  // ✅: print project data with the function you wrote
   printProjectData();
 
   // ✅: clear the form inputs
