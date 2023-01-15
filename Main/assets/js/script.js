@@ -7,9 +7,10 @@ var projectNameInputEl = $('#project-name-input');
 var projectTypeInputEl = $('#project-type-input');
 var projectDateInputEl = $('#project-date-input');
 
-// TODO: write a function to handle displaying the time
+// ✅: write a function to handle displaying the time
 function displayTime() {
-  // ...
+  var rightNow = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a');
+  timeDisplayEl.text(rightNow);
 }
 
 // ✅: write a function to read projects from local storage
@@ -18,12 +19,12 @@ function readProjectsFromStorage() {
   return projects;
 }
 
-// TODO: write a function that saves projects (passed as a parameter) to local storage
+// ✅: write a function that saves projects (passed as a parameter) to local storage
 function saveProjectsToStorage(projects) {
   localStorage.setItem('projects', JSON.stringify(projects));
 }
 
-// TODO: write a function that gets project data from local storage and prints/displays it in the DOM
+// ✅: write a function that gets project data from local storage and prints/displays it in the DOM
 function printProjectData() {
   // ✅: clear current projects on the page (*hint!* how can you "empty" something in jQuery)
   projectDisplayEl.empty();
@@ -111,9 +112,11 @@ projectFormEl.on('submit', handleProjectFormSubmit);
 // TODO: and to delete a project (<-- TASK 4 ONLY)
 // (*hint!* brush up on jQuery event delegation to listen for clicks on dynamically elements
 
-// TODO: call the function to display the initial time
+// ✅: call the function to display the initial time
+displayTime();
 
 // TODO: update the time every second
+setInterval(displayTime, 1000)
 
 // ✅: call the function to print the project data read from local storage on page load
 printProjectData();
