@@ -19,11 +19,12 @@ function readProjectsFromStorage() {
 
 // TODO: write a function that saves projects (passed as a parameter) to local storage
 function saveProjectsToStorage(projects) {
-  // ...
+  localStorage.setItem('projects', JSON.stringify(projects));
 }
 
 // TODO: write a function that gets project data from local storage and prints/displays it in the DOM
 function printProjectData() {
+  console.log('printing....');
   // TODO: clear current projects on the page (*hint!* how can you "empty" something in jQuery)
 
   // TODO: get projects from localStorage (*hint!* call the function you already wrote!)
@@ -60,17 +61,32 @@ function printProjectData() {
 // (*hint!* this should happen when the form in the modal is submitted)
 function handleProjectFormSubmit(event) {
   event.preventDefault();
-  console.log('submit works!', event);
-  // TODO: read user input from the form
+  // ✅: read user input from the form
+  var projectName = projectNameInputEl.val().trim();
+  var projectType = projectTypeInputEl.val();
+  var projectDate = projectDateInputEl.val();
 
-  // TODO: mold a new object with the data from above
+  // ✅: mold a new object with the data from above
+  var newProject = {
+    name: projectName,
+    type: projectType,
+    date: projectDate
+  }
 
-  // TODO: add project to local storage w/ the function you already wrote
+  // ✅: add project to local storage w/ the function you already wrote
   // (*hint!* make sure it doesn't overwrite other projects, but rather ADDS it)
+  var projects = []; // TODO: write & call readProjectsFromStorage
+  projects.push(newProject);
+
+  saveProjectsToStorage(projects);
 
   // TODO: print project data with the function you wrote
+  printProjectData();
 
-  // TODO: clear the form inputs
+  // ✅: clear the form inputs
+  projectNameInputEl.val('');
+  projectTypeInputEl.val('');
+  projectDateInputEl.val('');
 }
 
 // ----- TASK 4 - ONLY WORK ON THIS IF YOU'VE COMPLETED TASKS 1 - 3!!!
