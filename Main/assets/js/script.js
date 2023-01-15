@@ -50,7 +50,8 @@ function printProjectData() {
 
     // ----- TASK 4 - ONLY WORK ON THIS IF YOU'VE COMPLETED TASKS 1 - 3!!!
     // ✅: create a Delete button in its own table cell
-    var deleteEl = $('<td><button class="btn btn-sm">X</button></td>');
+    var deleteEl = $(
+      '<td><button class="btn btn-sm btn-delete-project" data-index="' + i + '">X</button></td>');
     // (*hint!* save the index of the project as a `data-*` attribute on the button so we know
     // what project to delete when we click that button)
 
@@ -102,20 +103,27 @@ function handleProjectFormSubmit(event) {
 }
 
 // ----- TASK 4 - ONLY WORK ON THIS IF YOU'VE COMPLETED TASKS 1 - 3!!!
-// TODO: write a function to temove a project from local storage and call the fn that prints the project data
+// ✅: write a function to temove a project from local storage and call the fn that prints the project data
 function handleDeleteProject() {
-  // ...
+  var projectIndex = parseInt($(this).attr('data-index'));
+
+  var projects = readProjectsFromStorage();
+  projects.splice(projectIndex, 1);
+  saveProjectsToStorage(projects);
+
+  printProjectData();
 }
 
 // ✅: set up event listeners for new project form submission and
 projectFormEl.on('submit', handleProjectFormSubmit);
-// TODO: and to delete a project (<-- TASK 4 ONLY)
+// ✅: and to delete a project (<-- TASK 4 ONLY)
 // (*hint!* brush up on jQuery event delegation to listen for clicks on dynamically elements
+projectDisplayEl.on('click', '.btn-delete-project', handleDeleteProject);
 
 // ✅: call the function to display the initial time
 displayTime();
 
-// TODO: update the time every second
+// ✅: update the time every second
 setInterval(displayTime, 1000)
 
 // ✅: call the function to print the project data read from local storage on page load
